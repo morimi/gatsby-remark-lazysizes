@@ -1,0 +1,13 @@
+{
+  "name": "gatsby-remark-lazysizes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "mormi",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "unist-util-visit-parents": "^5.1.0"
+  },
+  "devDependencies": {}
+}
