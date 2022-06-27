@@ -1,12 +1,10 @@
 const visit = require(`unist-util-visit`)
 
 module.exports = ({ markdownAST }) => {
-  const htmls = []
 
   visit(markdownAST, "html", node => {
-    htmls.push(node)
 
-    if (node.value.indexOf("<img") >= 0 ) {
+    if (typeof node.value === 'string' && node.value.indexOf("<img") >= 0) {
 
       if (node.value.indexOf('.gif') >= 0) { // GIF image
         if (/<img.*class=/.test(node.value)) {
