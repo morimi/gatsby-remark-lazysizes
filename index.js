@@ -8,22 +8,22 @@ module.exports = ({ markdownAST }) => {
 
       if (node.value.indexOf('.gif') >= 0) { // GIF image
         if (/<img.*class=/.test(node.value)) {
-          node.value = node.value.replaceAll(/class="([\w\d-_\s]+)"/g, 'class="$1 lazyload"')
+          node.value = node.value.replace(/class="([\w\d-_\s]+)"/g, 'class="$1 lazyload"')
         } else {
-          node.value = node.value.replaceAll(
-            "src=",
+          node.value = node.value.replace(
+            /src\=/g,
             'class="lazyload" src='
           )
         }
       } else {
-        node.value = node.value.replaceAll(
-          "gatsby-resp-image-image",
+        node.value = node.value.replace(
+          /gatsby\-resp\-image\-image/g,
           "gatsby-resp-image-image lazyload"
         )
       }
       
-      node.value = node.value.replaceAll("src=", "data-src=")
-      node.value = node.value.replaceAll("srcset=", "data-srcset=")
+      node.value = node.value.replace(/src\=/g, "data-src=")
+      node.value = node.value.replace(/srcset\=/g, "data-srcset=")
     }
   })
   
